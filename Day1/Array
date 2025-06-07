@@ -41,6 +41,120 @@ Storing fixed-size collections like days of the week or grades.
 Implementing matrices, buffers, queues, and stacks.
 In algorithms like sorting, searching, and hashing.
 
+Operations on Arrays with Time Complexity
+Arrays are a simple, fixed-size data structure where elements are stored in contiguous memory locations.
+Below are the common operations you can perform on arrays along with their time complexities:
+
+1. Accessing an Element
+Operation: Accessing an element at a given index in the array.
+Time Complexity: O(1) (Constant Time)
+Explanation: Since arrays provide direct access to each element using an index (e.g., arr[i]), it takes constant time to access any element in the array.
+Example:
+int element = arr[2];  // Accessing the element at index 2
+
+2. Inserting an Element
+Operation: Inserting an element at a specific index in the array.
+Time Complexity: O(n) (Linear Time)
+Explanation: Inserting an element at a specific position in an array (not at the end) requires shifting all subsequent elements one position to the right to make room for the new element. 
+This results in a time complexity of O(n), where n is the number of elements in the array.
+Example:
+
+// Insert at index 2
+for (int i = arr.length - 1; i > 2; i--) {
+    arr[i] = arr[i - 1];  // Shift elements to the right
+}
+arr[2] = 100;  // Insert 100 at index 2
+
+
+3. Deleting an Element
+Operation: Deleting an element at a specific index in the array.
+Time Complexity: O(n) (Linear Time)
+Explanation: Deleting an element requires shifting all the subsequent elements one position to the left. 
+This operation involves moving n - 1 elements to fill the gap, making the time complexity O(n).
+Example:
+// Delete element at index 2
+for (int i = 2; i < arr.length - 1; i++) {
+    arr[i] = arr[i + 1];  // Shift elements to the left
+}
+
+4. Appending an Element
+Operation: Appending an element at the end of the array.
+Time Complexity: O(1) (Constant Time)
+Explanation: Appending an element to the end of an array, if there is space, is a constant time operation since the last index is directly accessible.
+Example:
+arr[arr.length - 1] = 100;  // Append 100 to the end of the array
+Note: In dynamic arrays like ArrayList in Java or List in Python, appending is amortized O(1), but if the array is full and needs to be resized, the resizing operation takes O(n) time, though this is rare.
+
+5. Searching for an Element
+Operation: Searching for an element in an array.
+Time Complexity: O(n) (Linear Time)
+Explanation: In an unsorted array, we need to check each element one by one until we find the target element. This results in O(n) time complexity.
+Example:
+boolean found = false;
+for (int i = 0; i < arr.length; i++) {
+    if (arr[i] == target) {
+        found = true;
+        break;
+    }
+}
+If the array is sorted, you can use binary search (explained below), which reduces the time complexity to O(log n).
+
+
+6. Binary Search (on Sorted Array)
+Operation: Finding an element in a sorted array using binary search.
+Time Complexity: O(log n) (Logarithmic Time)
+Explanation: In binary search, you repeatedly divide the search space in half.
+At each step, you compare the middle element with the target and eliminate half of the remaining elements, reducing the search space logarithmically.
+Example:
+
+int left = 0, right = arr.length - 1;
+while (left <= right) {
+    int mid = left + (right - left) / 2;
+    if (arr[mid] == target) {
+        return mid;  // Found the element
+    }
+    if (arr[mid] < target) {
+        left = mid + 1;  // Search in the right half
+    } else {
+        right = mid - 1;  // Search in the left half
+    }
+}
+
+7. Reversing the Array
+Operation: Reversing the order of elements in the array.
+Time Complexity: O(n) (Linear Time)
+Explanation: To reverse an array, you need to swap elements from both ends. This operation involves iterating through the array once, which gives O(n) time complexity.
+Example:
+for (int i = 0; i < arr.length / 2; i++) {
+    int temp = arr[i];
+    arr[i] = arr[arr.length - 1 - i];
+    arr[arr.length - 1 - i] = temp;
+}
+
+8. Copying an Array
+Operation: Copying all elements from one array to another.
+Time Complexity: O(n) (Linear Time)
+Explanation: To copy an array, each element must be accessed and copied to the new array, so the time complexity is proportional to the size of the array, i.e., O(n).
+Example:
+int[] newArr = new int[arr.length];
+for (int i = 0; i < arr.length; i++) {
+    newArr[i] = arr[i];  // Copy each element
+}
+
+9. Sorting the Array
+Operation: Sorting an array (e.g., using quick sort, merge sort, etc.)
+Time Complexity: O(n log n) (for efficient sorting algorithms like quicksort/mergesort)
+Explanation: Sorting an array typically uses algorithms like quick sort or merge sort, which have a time complexity of O(n log n) in the average case. 
+However, some simpler algorithms like bubble sort or insertion sort have a worst-case time complexity of O(n^2).
+Example (Quick Sort):
+public void quickSort(int[] arr, int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
 
 Ques : Why do most programming languages (like Java, C, Python) use 0-based indexing for arrays instead of 1-based indexing, and what are the advantages of using 0-based indexing?
 
