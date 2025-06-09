@@ -1,0 +1,147 @@
+🔷 What is a Stack?
+A Stack is a linear data structure that follows the Last In First Out (LIFO) principle. The element added last is the one removed first.
+
+Key Concept:
+Think of a stack of plates: you add (push) a plate to the top and remove (pop) the top plate first.
+📌 When and Why Do We Use a Stack?
+✅ When to Use:
+Function call handling (Call Stack in recursion)
+Undo/Redo operations
+Balancing parentheses in expressions
+Expression evaluation (Postfix/Infix)
+Backtracking algorithms (e.g., solving mazes, N-Queens)
+Browser history navigation
+
+✅ Why Use a Stack:
+Easy to manage order of operations
+Efficient for LIFO access
+Natural fit for recursive and backtracking problems
+
+✅ Advantages and Disadvantages
+✔️ Advantages:
+Simple and intuitive
+Efficient memory usage for LIFO logic
+Supports recursion naturally
+
+❌ Disadvantages:
+Not suitable for random access
+Can lead to stack overflow in deep recursion
+Fixed size in static implementations (e.g., using arrays)
+
+⚙️ Stack Operations with Time and Space Complexity
+Operation	Description	Time Complexity	Space Complexity
+push()	Add item to top	O(1)	O(1)
+pop()	Remove top item	O(1)	O(1)
+peek()	View top item	O(1)	O(1)
+isEmpty()	Check if empty	O(1)	O(1)
+
+🧾 Stack Methods in Java (with Code)
+✅ Using Java's Stack Class (from java.util)
+
+import java.util.Stack;
+public class StackExample {
+    public static void main(String[] args) {
+        Stack<Integer> stack = new Stack<>();
+
+        // Push elements
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        System.out.println("Stack after pushes: " + stack);
+
+        // Peek top element
+        System.out.println("Top element: " + stack.peek());
+
+        // Pop element
+        System.out.println("Popped element: " + stack.pop());
+
+        // Check if stack is empty
+        System.out.println("Is stack empty? " + stack.isEmpty());
+
+        // Final state
+        System.out.println("Final Stack: " + stack);
+    }
+}
+
+✅ Custom Stack Implementation using Array
+class MyStack {
+    private int[] arr;
+    private int top;
+    private int capacity;
+
+    // Constructor
+    MyStack(int size) {
+        arr = new int[size];
+        capacity = size;
+        top = -1;
+    }
+
+    // Push method
+    public void push(int x) {
+        if (isFull()) {
+            System.out.println("Stack Overflow");
+            return;
+        }
+        arr[++top] = x;
+    }
+
+    // Pop method
+    public int pop() {
+        if (isEmpty()) {
+            System.out.println("Stack Underflow");
+            return -1;
+        }
+        return arr[top--];
+    }
+
+    // Peek method
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Stack is Empty");
+            return -1;
+        }
+        return arr[top];
+    }
+
+    // isEmpty method
+    public boolean isEmpty() {
+        return top == -1;
+    }
+
+    // isFull method
+    public boolean isFull() {
+        return top == capacity - 1;
+    }
+
+    // Size method
+    public int size() {
+        return top + 1;
+    }
+
+    // Display stack
+    public void display() {
+        for (int i = 0; i <= top; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyStack stack = new MyStack(5);
+
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        stack.display();
+
+        System.out.println("Top: " + stack.peek());
+        System.out.println("Popped: " + stack.pop());
+        stack.display();
+    }
+}
+Conclusion
+A stack is a versatile and essential data structure used in many computing scenarios, 
+especially those requiring reverse-order processing or temporary storage. It's fast, efficient, 
+and easy to implement both via libraries and from scratch.
