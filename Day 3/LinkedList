@@ -145,16 +145,16 @@ Get by Index	get(index)	get(index)	O(n)
 Search Element	Traverse	contains()	O(n)
 
 ✅ Time and Space Complexities of LinkedList Operations
-Operation	Time Complexity (Singly)	|Time Complexity (Doubly / Java’s LinkedList)	|Space Complexity per Node
+Operation	Time Complexity (Singly)	|Time Complexity (Doubly / Java’s LinkedList) |Space Complexity per Node
 Add First (addFirst)	O(1)	        | O(1)                                        |	O(1)                                 
-Add Last (addLast)	O(n)	          | O(1) (Java keeps tail pointer)	            | O(1) 
+Add Last (addLast)	O(n)	            | O(1) (Java keeps tail pointer)	          | O(1) 
 Remove First	O(1)	                | O(1)	                                      | O(1)
-Remove Last	O(n)	                  | O(1)	                                      | O(1)
+Remove Last	O(n)	                    | O(1)	                                      | O(1)
 Search / Contains	O(n)	            | O(n)	                                      | O(1)
 Get by Index	O(n)	                | O(n)	                                      | (1)
-Insert at Index	O(n)	              | O(n)	                                      | O(1)
-Delete at Index	O(n)	              | O(n)	                                      | O(1)
-Size (length)	                      |O(n) (if no size tracker)	                  |O(1) (Java tracks size internally)	O(1)
+Insert at Index	O(n)	                | O(n)	                                      | O(1)
+Delete at Index	O(n)	                | O(n)	                                      | O(1)
+Size (length)	                        |O(n) (if no size tracker)	                  |O(1) (Java tracks size internally)	O(1)
 Traverse Entire List	O(n)	        | O(n)	                                      |O(1)
 
 🧠 Space Complexity (Overall)
